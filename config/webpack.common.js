@@ -3,6 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PrettierPlugin = require('prettier-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
+
 const paths = require('./paths')
 
 module.exports = {
@@ -66,5 +67,13 @@ module.exports = {
       // Fonts and SVGs: Inline files
       { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
     ],
+  },
+
+  resolve: {
+    modules: [paths.src, 'node_modules'],
+    extensions: ['.js', '.jsx', '.json'],
+    alias: {
+      '@': paths.src,
+    },
   },
 }
